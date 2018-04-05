@@ -11,6 +11,7 @@ import java.util.List;
  */
 public class Avaliador {
     private double maiorLance = 0.0;
+    private double menorLance = Double.MAX_VALUE;
     private List<Lance> maiores;
     
     public void avalia(Leilao l){
@@ -19,7 +20,13 @@ public class Avaliador {
         for(Lance lance: lances){
         	if(lance.getValor() > this.maiorLance)
         		this.maiorLance = lance.getValor();
+        	if(lance.getValor() < this.menorLance)
+        		this.menorLance = lance.getValor();
         }
+    }
+    
+    public double getMenor() {
+    	return menorLance;
     }
     
     public double getMaior(){
